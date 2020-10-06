@@ -4,10 +4,9 @@ using System.Text;
 
 namespace eShopSolution.Application.Dtos
 {
-    public class PageViewModel<T>
+    public class PagingRequestBase
     {
-
-        public List<T> Items { set; get; }
-        public int TotalRecord { set; get; }
+        public int PageIndex { get; set; }
+       public int PageSize { get; set; }
     }
 }
