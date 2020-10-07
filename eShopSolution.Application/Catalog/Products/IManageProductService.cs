@@ -1,10 +1,10 @@
-﻿using eShopSolution.Application.Catalog.Products.Dtos;
-using eShopSolution.Application.Catalog.Products.Dtos.Manage;
-using eShopSolution.Application.Dtos;
-using System;
+﻿using eShopSolution.ViewModels.Catalog.Products;
+using eShopSolution.ViewModels.Catalog.Products.Manage;
+using eShopSolution.ViewModels.Common;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using GetProductPagingRequest = eShopSolution.ViewModels.Catalog.Products.Manage.GetProductPagingRequest;
 
 namespace eShopSolution.Application.Catalog.Products
 {
@@ -21,8 +21,13 @@ namespace eShopSolution.Application.Catalog.Products
         Task<bool> UpdateStock(int productId, int addedQuantity);
         Task AddViewCount(int productId);
 
-        
+        Task<int> AddImages(int productId, List<IFormFile> files);
+
+        Task<int> RemoveImages(int imageId);
+
+        Task<int> UpdateImage(int imageId, string caption, bool isDefault);
 
         Task<PagedResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request);
+        Task<List<ProductImageViewModel>> GetListImage(int productId);
     }
 }
